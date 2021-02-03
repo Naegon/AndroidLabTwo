@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:orientation="vertical"
+    android:paddingVertical="@dimen/margin_vertical_double"
+    android:paddingHorizontal="@dimen/margin_horizontal_double" >
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnGetImg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/get_an_image"
+        android:textColor="@color/white" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/image"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="@dimen/margin_vertical" />
+</LinearLayout>
