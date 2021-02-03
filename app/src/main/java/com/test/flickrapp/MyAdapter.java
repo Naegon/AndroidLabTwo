@@ -1,13 +1,22 @@
 package com.test.flickrapp;
 
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
+import java.util.Vector;
+
 class MyAdapter extends BaseAdapter {
+    private Vector<String> vector;
+
+    public void dd(String url) {
+        vector.add(url);
+    }
+
     @Override
     public int getCount() {
-        return 0;
+        return vector.size();
     }
 
     @Override
@@ -22,6 +31,7 @@ class MyAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
+        Log.i("JFL", "TODO");
         return null;
     }
 }
