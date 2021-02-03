@@ -22,5 +22,7 @@ public class MainActivity extends AppCompatActivity {
         btnListActivity.setOnClickListener(v -> {
             startActivity(new Intent(this, ListActivity.class));
         });
+
+
     }
 }
