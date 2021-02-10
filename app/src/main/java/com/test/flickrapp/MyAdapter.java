@@ -7,6 +7,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
+
+import com.android.volley.RequestQueue;
+
 import java.util.Vector;
 
 class MyAdapter extends BaseAdapter {
@@ -42,6 +45,8 @@ class MyAdapter extends BaseAdapter {
         }
         TextView textView = convertView.findViewById(R.id.textView);
         textView.setText(vector.get(position));
+
+        RequestQueue queue = MySingleton.getInstance(parent.getContext()).getRequestQueue();
 
         return convertView;    }
 
