@@ -2,9 +2,13 @@ package com.test.flickrapp;
 
 import android.os.AsyncTask;
 import android.util.Log;
+
 import androidx.appcompat.widget.AppCompatImageView;
+
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
 import java.io.BufferedInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -13,13 +17,13 @@ import java.lang.ref.WeakReference;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-class AsyncFlickrJSONData extends AsyncTask<String, Void, JSONObject> {
+class AsyncFlickrJSONDataForList extends AsyncTask<String, Void, JSONObject> {
     private URL url;
     private JSONObject result;
-    private final WeakReference<AppCompatImageView> image;
+    private final WeakReference<MyAdapter> myAdapter;
 
-    public AsyncFlickrJSONData(WeakReference<AppCompatImageView> image) {
-        this.image = image;
+    public AsyncFlickrJSONDataForList(WeakReference<MyAdapter> myAdapter) {
+        this.myAdapter = myAdapter;
     }
 
     @Override
@@ -42,14 +46,20 @@ class AsyncFlickrJSONData extends AsyncTask<String, Void, JSONObject> {
         return result;
     }
 
-
     @Override
     protected void onPostExecute(JSONObject jsonObject) {
         super.onPostExecute(jsonObject);
         try {
+            MyAdapter adapter = myAdapter.get();
             Log.i("JFL", result.getJSONArray("items").getJSONObject(0).getString("link"));
-            AsyncBitmapDownloader task = new AsyncBitmapDownloader(image);
-            task.execute(result.getJSONArray("items").getJSONObject(0).getJSONObject("media").getString("m"));
+            JSONArray items = result.getJSONArray("items");
+            for (int i = 0; i < items.length(); i++) {
+                adapter.add(items.getJSONObject(i).getJSONObject("media").getString("m"));
+
+            }
+
+//            AsyncBitmapDownloader task = new AsyncBitmapDownloader(image);
+//            task.execute(result.getJSONArray("items").getJSONObject(0).getJSONObject("media").getString("m"));
         } catch (JSONException e) {
             e.printStackTrace();
         }

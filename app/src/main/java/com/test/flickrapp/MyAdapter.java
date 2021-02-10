@@ -10,8 +10,8 @@ import java.util.Vector;
 class MyAdapter extends BaseAdapter {
     private Vector<String> vector;
 
-    public void dd(String url) {
-        vector.add(url);
+    public MyAdapter() {
+        this.vector = new Vector<>();
     }
 
     @Override
@@ -33,5 +33,10 @@ class MyAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         Log.i("JFL", "TODO");
         return null;
+    }
+
+    public void add(String url) {
+        Log.i("JFL", "Adding to adapter url: " + url);
+        vector.add(url);
     }
 }
