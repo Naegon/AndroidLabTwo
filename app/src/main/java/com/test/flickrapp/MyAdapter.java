@@ -1,6 +1,8 @@
 package com.test.flickrapp;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.android.volley.RequestQueue;
+import com.android.volley.Response;
 import com.android.volley.toolbox.ImageRequest;
 
 import java.util.Vector;
@@ -30,31 +33,31 @@ class MyAdapter extends BaseAdapter {
 
     @Override
     public Object getItem(int position) {
-        return null;
+        return vector.get(position);
     }
 
     @Override
     public long getItemId(int position) {
-        return 0;
+        return position;
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        if( convertView == null ){
+        if (convertView == null) {
             //We must create a View:
             LayoutInflater inflater = LayoutInflater.from(context);
             convertView = inflater.inflate(R.layout.bitmap_layout, parent, false);
         }
-//        TextView textView = convertView.findViewById(R.id.textView);
-//        textView.setText(vector.get(position));
 
-        RequestQueue queue = MySingleton.getInstance(parent.getContext()).getRequestQueue();
         ImageView image = convertView.findViewById(R.id.image);
 
-//        ImageRequest imageRequest = new ImageRequest(vector.get(position), )
-//        image.setImageBitmap(vector.get(position));
+        Response.Listener<Bitmap> rep_listener = image::setImageBitmap;
 
-        return convertView;    }
+        ImageRequest imageRequest = new ImageRequest(vector.get(position), rep_listener, 0, 0, ImageView.ScaleType.CENTER_CROP, null, null);
+        MySingleton.getInstance(context).addToRequestQueue(imageRequest);
+
+        return convertView;
+    }
 
     public void add(String url) {
         Log.i("JFL", "Adding to adapter url: " + url);
