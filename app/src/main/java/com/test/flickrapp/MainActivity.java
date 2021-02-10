@@ -1,11 +1,11 @@
 package com.test.flickrapp;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.AppCompatImageView;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
@@ -15,6 +15,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+//        SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
+//        SharedPreferences.Editor editor = sharedPref.edit();
+//        editor.putInt(getString("CustomWord"), true);
+//        editor.apply();
+
         Button btnGetImg = findViewById(R.id.btnGetImg);
         btnGetImg.setOnClickListener(new GetImageOnClickListener(findViewById(R.id.image)));
 
@@ -23,6 +28,9 @@ public class MainActivity extends AppCompatActivity {
             startActivity(new Intent(this, ListActivity.class));
         });
 
-
+        Button btnPreferences = findViewById(R.id.btnPreferences);
+        btnPreferences.setOnClickListener(v -> {
+            startActivity(new Intent(this, PreferenceActivity.class));
+        });
     }
 }

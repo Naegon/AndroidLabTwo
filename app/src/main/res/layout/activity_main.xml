@@ -1,31 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".MainActivity"
     android:orientation="vertical"
     android:paddingVertical="@dimen/margin_vertical_double"
-    android:paddingHorizontal="@dimen/margin_horizontal_double" >
+    android:paddingHorizontal="@dimen/margin_horizontal_double">
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnGetImg"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/get_an_image"
-        android:textColor="@color/white" />
+        android:textColor="@color/white"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/image"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="@dimen/margin_vertical"
+        app:layout_constraintTop_toBottomOf="@id/btnGetImg"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnPreferences"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/preferences"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toTopOf="@id/btnListActivity"/>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnListActivity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/go_to_list_activity"
-        android:textColor="@color/white" />
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent" />
 
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/image"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginVertical="@dimen/margin_vertical" />
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
