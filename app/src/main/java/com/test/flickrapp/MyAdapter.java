@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.ImageRequest;
 
 import java.util.Vector;
 
@@ -49,6 +50,8 @@ class MyAdapter extends BaseAdapter {
 
         RequestQueue queue = MySingleton.getInstance(parent.getContext()).getRequestQueue();
         ImageView image = convertView.findViewById(R.id.image);
+
+//        ImageRequest imageRequest = new ImageRequest(vector.get(position), )
 //        image.setImageBitmap(vector.get(position));
 
         return convertView;    }
