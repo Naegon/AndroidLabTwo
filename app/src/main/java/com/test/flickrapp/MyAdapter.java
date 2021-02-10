@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.android.volley.RequestQueue;
@@ -41,12 +42,14 @@ class MyAdapter extends BaseAdapter {
         if( convertView == null ){
             //We must create a View:
             LayoutInflater inflater = LayoutInflater.from(context);
-            convertView = inflater.inflate(R.layout.textviewlayout, parent, false);
+            convertView = inflater.inflate(R.layout.bitmap_layout, parent, false);
         }
-        TextView textView = convertView.findViewById(R.id.textView);
-        textView.setText(vector.get(position));
+//        TextView textView = convertView.findViewById(R.id.textView);
+//        textView.setText(vector.get(position));
 
         RequestQueue queue = MySingleton.getInstance(parent.getContext()).getRequestQueue();
+        ImageView image = convertView.findViewById(R.id.image);
+//        image.setImageBitmap(vector.get(position));
 
         return convertView;    }
 
