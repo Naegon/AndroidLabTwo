@@ -2,6 +2,7 @@ package com.test.flickrapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.widget.ListView;
 
@@ -15,7 +16,7 @@ public class ListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list);
 
-        MyAdapter myAdapter = new MyAdapter();
+        MyAdapter myAdapter = new MyAdapter(getApplicationContext());
         listView = findViewById(R.id.list);
         listView.setAdapter(myAdapter);
 
