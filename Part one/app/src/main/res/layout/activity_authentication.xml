@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/blue"
+    tools:context=".Authentication"
+    android:paddingHorizontal="@dimen/margin_horizontal_double" >
+
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/image_bycicle"
+        android:layout_width="match_parent"
+        android:layout_height="240dp"
+        android:layout_marginVertical="@dimen/margin_vertical_double"
+        android:src="@drawable/ic_cyclist"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/editTextUsername"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="@dimen/margin_vertical_double"
+
+        android:hint="Username"
+        app:startIconDrawable="@drawable/ic_email"
+
+        style="@style/Field"
+        app:layout_constraintTop_toBottomOf="@id/image_bycicle" >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/textInputUsername"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/editTextPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="@dimen/margin_vertical_double"
+
+        android:hint="Password"
+        app:startIconDrawable="@drawable/ic_padlock"
+        app:endIconMode="password_toggle"
+
+        style="@style/Field"
+        app:layout_constraintTop_toBottomOf="@id/editTextUsername" >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/textInputPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/textViewResult"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:textAlignment="center"
+        android:text="Result"
+        app:layout_constraintBottom_toTopOf="@id/btnLogin"
+        android:visibility="gone" />
+
+    <Button
+        android:id="@+id/btnLogin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/blue_dark"
+        android:shadowColor="@color/blue_dark"
+        android:layout_marginVertical="@dimen/margin_vertical_double"
+        style="@style/Button"
+        android:text="Authenticate"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
